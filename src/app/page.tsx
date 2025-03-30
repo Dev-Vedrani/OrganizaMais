@@ -1,14 +1,20 @@
-export default function Home() {
+import { Menu } from "./Components/Nav/Menu";
+import { Header } from "./Components/Header/Header";
+
+const Home = () => {
   return (
-    <main className="bg-zinc-900 w-screen h-screen text-zinc-100 overflow-x-hidden">
-      <div className="flex flex-row justify-between p-15 space-x-10">
-        <section className="">Menu</section>
-        <section className="flex-3/4">
-          <h3 className="text-xl font-light">
-            Bem-Vindo, <p className="text-4xl font-semibold">Cb Vedrani</p>
-          </h3>
+    <main className="bg-zinc-800 w-screen h-screen overflow-x-hidden">
+      <div className="flex flex-row justify-between p-4 h-full">
+        <section className="">
+          <Menu />
+        </section>
+        <section className="flex-11/12 bg-blue-50 rounded-md p-3 relative">
+          <Header />
+          <hr className="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
         </section>
       </div>
     </main>
   );
-}
+};
+
+export default Home;
