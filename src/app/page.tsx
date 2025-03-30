@@ -7,7 +7,6 @@ const Home = () => {
       <div className="flex flex-row justify-between p-4 h-full">
         <section className="">
           <Menu />
-          oi
         </section>
         <section className="flex-11/12 bg-blue-50 rounded-md p-3 relative">
           <Header />
