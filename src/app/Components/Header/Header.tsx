@@ -9,7 +9,7 @@ export const Header = () => {
           Cb Vedrani
         </span>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col pt-3.5">
         <span>A persistência é o caminho do êxito.</span>
         <span className="text-center">- Charles Chaplin.</span>
       </div>
