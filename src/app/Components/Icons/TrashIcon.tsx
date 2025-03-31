@@ -6,7 +6,7 @@ export const TrashIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="size-5"
+      className="flex items-center justify-self-end size-5"
     >
       <path
         strokeLinecap="round"

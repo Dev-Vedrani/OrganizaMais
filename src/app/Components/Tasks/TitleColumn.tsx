@@ -1,5 +1,4 @@
-import { EditIcon } from "../Icons/EditIcon";
-import { TrashIcon } from "../Icons/TrashIcon";
+import { MoreIcon } from "../Icons/MoreIcon";
 
 export const TitleColumn = () => {
   return (
@@ -8,8 +7,9 @@ export const TitleColumn = () => {
         <span className="font-semibold text-xl">A fazer</span>
       </div>
       <div className="flex flex-row space-x-2">
-        <TrashIcon />
-        <EditIcon />
+        <button className="cursor-pointer">
+          <MoreIcon />
+        </button>
       </div>
     </div>
   );

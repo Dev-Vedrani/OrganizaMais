@@ -4,11 +4,12 @@ import { TitleColumn } from "./TitleColumn";
 
 export const TaskComponent = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-10">
       <div className="min-w-[250px] max-w-[350px] rounded-lg bg-zinc-800 text-white p-4 hover:ring-2 hover:ring-cyan-200">
         <TitleColumn />
         <hr className="my-1.5 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-25 dark:via-cyan-400" />
         <NewTask />
+
         <div>
           <span className="flex justify-center items-center">
             <AddIcon />
