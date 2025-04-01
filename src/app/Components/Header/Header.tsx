@@ -1,14 +1,14 @@
 import { DateComponent } from "./Date";
+import { UserName } from "./UserName";
 
-export const Header = () => {
+interface HeaderProps {
+  name: string;
+}
+
+export const Header = ({ name }: HeaderProps) => {
   return (
     <div className="text-xl font-light flex justify-between items-center">
-      <div className="">
-        Bem-Vindo,
-        <span className="text-4xl font-semibold block border-b-2 border-blue-200 rounded-md pr-1">
-          Cb Vedrani
-        </span>
-      </div>
+      <UserName name={name} />
       <div className="flex flex-col pt-3.5">
         <span>A persistência é o caminho do êxito.</span>
         <span className="text-center">- Charles Chaplin.</span>

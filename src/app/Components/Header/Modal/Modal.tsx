@@ -4,9 +4,11 @@ import welcomeImage from "@/../public/Enthusiastic-bro.svg";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  name: string;
+  inputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Modal = ({ isOpen, onClose }: ModalProps) => {
+export const Modal = ({ isOpen, onClose, name, inputChange }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
@@ -38,6 +40,8 @@ export const Modal = ({ isOpen, onClose }: ModalProps) => {
               className="w-full py-2 outline-none border-b-2 border-zinc-400 focus:border-cyan-400 duration-800"
               type="text"
               placeholder="Como gostaria de ser chamado?"
+              value={name}
+              onChange={inputChange}
             />
           </div>
           <button
