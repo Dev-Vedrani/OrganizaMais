@@ -8,16 +8,19 @@ export const TaskComponent = () => {
           title={"Pendentes"}
           firstColor={"via-red-700"}
           secondColor={"via-red-500"}
+          showAddIcon={true}
         />
         <Column
           title={"Iniciado"}
           firstColor={"via-yellow-700"}
           secondColor={"via-yellow-500"}
+          showAddIcon={false}
         />
         <Column
           title={"Concluído"}
           firstColor={"via-green-700"}
           secondColor={"via-green-500"}
+          showAddIcon={false}
         />
       </div>
     </div>

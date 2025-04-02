@@ -1,18 +1,46 @@
-import { TrashIcon } from "../Icons/TrashIcon";
+import { useState } from "react";
 
-export const NewTask = () => {
+interface NewTaskProps {
+  onAddTask: (title: string) => void;
+  onCancel: () => void;
+}
+
+export const NewTask = ({ onAddTask, onCancel }: NewTaskProps) => {
+  const [title, setTitle] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (title.trim()) {
+      onAddTask(title.trim());
+      setTitle("");
+    }
+  };
+
   return (
-    <div className="my-5 flex flex-col gap-3">
-      <div className="flex flex-col">
-        <ul className="space-y-2">
-          <div className="flex items-center justify-between shadow-sm shadow-zinc-950 bg-zinc-700 py-1 px-3 cursor-grabbing rounded-md hover:bg-zinc-600">
-            <li className="flex-1 min-w-0 pr-2 truncate">Tarefa 1</li>
-            <div className="flex-shrink-0 cursor-pointer">
-              <TrashIcon />
-            </div>
-          </div>
-        </ul>
+    <form onSubmit={handleSubmit} className="space-y-2">
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Nova tarefa..."
+        className="w-full p-2 rounded bg-zinc-700 text-white"
+        autoFocus
+      />
+      <div className="flex gap-2">
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded"
+        >
+          Adicionar
+        </button>
+        <button
+          type="button"
+          onClick={onCancel}
+          className="px-4 py-2 bg-zinc-600 hover:bg-zinc-700 rounded"
+        >
+          Cancelar
+        </button>
       </div>
-    </div>
+    </form>
   );
 };
