@@ -2,7 +2,7 @@
 
 // import { Menu } from "./Components/Nav/Menu";
 import { Header } from "./Components/Header/Header";
-import { TaskComponent } from "./Components/Tasks/Taks";
+import { WhiteboardComponent } from "./Components/Tasks/WhiteboardComponent";
 import { Modal } from "./Components/Modal/Modal";
 import { useState } from "react";
 
@@ -27,7 +27,7 @@ const Home = () => {
           <div className="h-screen flex flex-col item">
             <hr className="my-5 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
             <div>
-              <TaskComponent />
+              <WhiteboardComponent />
             </div>
           </div>
         </section>

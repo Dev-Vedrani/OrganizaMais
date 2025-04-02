@@ -1,8 +1,8 @@
 import { Column } from "./Column";
 
-export const TaskComponent = () => {
+export const WhiteboardComponent = () => {
   return (
-    <div className="w-full flex justify-center px-4 overflow-hidden">
+    <div className="w-full flex justify-center px-4">
       <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
         <Column
           title={"Pendentes"}

@@ -5,7 +5,7 @@ interface NewTaskProps {
   onCancel: () => void;
 }
 
-export const NewTask = ({ onAddTask, onCancel }: NewTaskProps) => {
+export const AddNewTask = ({ onAddTask, onCancel }: NewTaskProps) => {
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {

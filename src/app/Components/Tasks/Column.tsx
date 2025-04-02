@@ -1,5 +1,5 @@
+// import { useState } from "react";
 import { AddIcon } from "../Icons/AddIcon";
-
 import { TitleColumn } from "./TitleColumn";
 
 interface ColumnProps {
@@ -10,8 +10,14 @@ interface ColumnProps {
 }
 
 export const Column = ({ title, firstColor, showAddIcon }: ColumnProps) => {
+  // const [showInput, setShowInput] = useState<boolean>(false);
+
+  // const handleShowInput = () => {
+  //   setShowInput(!true);
+  // };
+
   return (
-    <div className="min-w-[380px] max-w-[380px] rounded-lg bg-zinc-800 text-white p-4 flex flex-col">
+    <div className="min-w-[380px] max-w-[380px] rounded-lg bg-zinc-800 text-white p-4 flex flex-col h-auto">
       <TitleColumn title={title} />
       <hr
         className={`my-1.5 h-[2px] border-t-0 bg-transparent bg-gradient-to-r from-transparent ${firstColor} to-transparent opacity-25`}
@@ -29,9 +35,12 @@ export const Column = ({ title, firstColor, showAddIcon }: ColumnProps) => {
         </div>
       </div>
       {showAddIcon && (
-        <div>
+        <button
+          // onClick={handleShowInput}
+          className="cursor-pointer py-1 flex justify-center rounded-md hover:bg-zinc-700 duration-500"
+        >
           <AddIcon />
-        </div>
+        </button>
       )}
     </div>
   );
