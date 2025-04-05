@@ -9,7 +9,7 @@ export const WhiteboardComponent = () => {
             title={"Pendentes"}
             firstColor={"via-red-700"}
             secondColor={"via-red-500"}
-            pending={true}
+            status={"pending"}
           />
         </div>
         <div className="flex-1 min-h-52">
@@ -17,7 +17,7 @@ export const WhiteboardComponent = () => {
             title={"Iniciado"}
             firstColor={"via-yellow-700"}
             secondColor={"via-yellow-500"}
-            pending={false}
+            status={"inProgress"}
           />
         </div>
         <div className="flex-1 min-h-52">
@@ -25,7 +25,7 @@ export const WhiteboardComponent = () => {
             title={"Concluído"}
             firstColor={"via-green-700"}
             secondColor={"via-green-500"}
-            pending={false}
+            status={"completed"}
           />
         </div>
       </div>
