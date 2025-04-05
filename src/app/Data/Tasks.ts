@@ -11,12 +11,30 @@ export const tasks: Task[] = [
     id: 2,
     title: "Fazer compras",
     completed: true,
-    status: "pending",
+    status: "inProgress",
   },
   {
     id: 3,
-    title: "Exercícios físicos",
+    title: "Treinar",
+    completed: false,
+    status: "completed",
+  },
+  {
+    id: 4,
+    title: "codar",
     completed: false,
     status: "inProgress",
+  },
+  {
+    id: 5,
+    title: "Estudar Espanhol",
+    completed: false,
+    status: "completed",
+  },
+  {
+    id: 6,
+    title: "Escala de formatura",
+    completed: false,
+    status: "pending",
   },
 ];
