@@ -6,6 +6,9 @@ import { InputComponent } from "./InputComponent";
 import { MinusIcon } from "../Icons/MinusIcon";
 import { Task } from "@/app/Data/TypeTask";
 import { PlayIcon } from "../Icons/PlayIcon";
+import { CircleStatus } from "./CircleStatus";
+import { TrashIcon } from "../Icons/TrashIcon";
+import { ReturnIcon } from "../Icons/ReturnIcon";
 
 interface ColumnProps {
   title: string;
@@ -32,30 +35,52 @@ export const Column = ({ title, firstColor, status, tasks }: ColumnProps) => {
           <ul className="space-y-2.5">
             {tasks.length > 0 ? (
               tasks.map((task) => (
-                <li key={task.id} className="flex gap-2">
-                  <div className="p-4 bg-zinc-700 rounded-md hover:bg-zinc-600 transition-colors flex justify-between w-full">
-                    <div>{task.title}</div>
-                    <button>
-                      {status === "pending" ? (
-                        <span className="relative flex size-3">
-                          <span className="absolute inline-flex h-full w-full rounded-full bg-zinc-400 opacity-75"></span>
-                          <span className="relative inline-flex size-3 rounded-full bg-zinc-500"></span>
-                        </span>
-                      ) : status === "inProgress" ? (
-                        <span className="relative flex size-3">
-                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
-                          <span className="relative inline-flex size-3 rounded-full bg-amber-500"></span>
-                        </span>
-                      ) : (
-                        <span className="relative flex size-3">
-                          <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex size-3 rounded-full bg-green-500"></span>
-                        </span>
-                      )}
-                    </button>
+                <li key={task.id} className="flex gap-2 h-14">
+                  <div className="p-4 bg-zinc-700 rounded-md hover:bg-zinc-600 transition-colors flex justify-between items-center flex-1">
+                    <div className="truncate">{task.title}</div>{" "}
+                    <CircleStatus
+                      status={status as "pending" | "inProgress" | "completed"}
+                    />
                   </div>
-                  <div className="p-4 bg-zinc-700 rounded-md hover:bg-zinc-600 transition-colors flex justify-between">
-                    <PlayIcon />
+
+                  <div className="bg-zinc-700 rounded-md  flex items-center px-2">
+                    <div className="flex items-center gap-2 h-full">
+                      <div className="p-1 hover:bg-zinc-500 rounded-md flex items-center justify-center h-8 w-8">
+                        <div className="flex items-center justify-center w-4 h-4">
+                          {status === "pending" ? (
+                            <button className="p-1 hover:bg-zinc-500 rounded-md flex items-center justify-center h-8 w-8 cursor-pointer">
+                              <div className="flex items-center justify-center w-4 h-4">
+                                <TrashIcon />
+                              </div>
+                            </button>
+                          ) : status === "inProgress" ? (
+                            <button className="p-1 hover:bg-zinc-500 rounded-md flex items-center justify-center h-8 w-8 cursor-pointer">
+                              <div className="flex items-center justify-center w-4 h-4">
+                                <ReturnIcon />
+                              </div>
+                            </button>
+                          ) : (
+                            <button className="p-1 hover:bg-zinc-500 rounded-md flex items-center justify-center h-8 w-8 cursor-pointer">
+                              <div className="flex items-center justify-center w-4 h-4">
+                                <ReturnIcon />
+                              </div>
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      {status === "pending" || status === "inProgress" ? (
+                        <div className="h-4 w-px bg-neutral-500 bg-opacity-25"></div>
+                      ) : null}
+
+                      {status === "pending" || status === "inProgress" ? (
+                        <button className="p-1 hover:bg-zinc-500 rounded-md flex items-center justify-center h-8 w-8 cursor-pointer">
+                          <div className="flex items-center justify-center w-4 h-4">
+                            <PlayIcon />
+                          </div>
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
                 </li>
               ))
