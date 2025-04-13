@@ -1,3 +1,4 @@
+// app/Components/Tasks/Column.tsx
 import { useState } from "react";
 import { Task, TaskStatus } from "@/app/Data/TypeTask";
 import { AddIcon } from "../Icons/AddIcon";

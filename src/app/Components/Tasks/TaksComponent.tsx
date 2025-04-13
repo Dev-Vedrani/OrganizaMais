@@ -1,6 +1,7 @@
+// app/Components/Tasks/TaskComponent.tsx
 import { useState } from "react";
 import { Column } from "./Column";
-import { Task } from "@/app/Data/Tasks";
+import { Task, TaskStatus } from "@/app/Data/TypeTask";
 
 export const TaskComponent = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -10,6 +11,7 @@ export const TaskComponent = () => {
       id: Date.now().toString(),
       title,
       status: "pending",
+      completed: false,
     };
     setTasks([...tasks, newTask]);
   };
@@ -18,14 +20,14 @@ export const TaskComponent = () => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const moveTask = (id: string, status: Task["status"]) => {
+  const moveTask = (id: string, status: TaskStatus) => {
     setTasks(
       tasks.map((task) => (task.id === id ? { ...task, status } : task))
     );
   };
 
   const pendingTasks = tasks.filter((task) => task.status === "pending");
-  const inProgressTasks = tasks.filter((task) => task.status === "in-progress");
+  const inProgressTasks = tasks.filter((task) => task.status === "inProgress");
   const completedTasks = tasks.filter((task) => task.status === "completed");
 
   return (
@@ -34,31 +36,28 @@ export const TaskComponent = () => {
         <Column
           title="Pendentes"
           firstColor="via-red-500"
-          secondColor="via-red-400"
-          addButton={true}
+          status="pending"
           tasks={pendingTasks}
           onAddTask={handleAddTask}
-          onDeleteTask={handleDeleteTask}
-          onMoveTask={(id) => moveTask(id, "in-progress")}
-          moveButtonText="Iniciar"
+          onRemoveTask={handleDeleteTask}
+          onUpdateTask={(id) => moveTask(id, "inProgress")}
         />
 
         <Column
           title="Em Progresso"
           firstColor="via-yellow-500"
-          secondColor="via-yellow-400"
+          status="inProgress"
           tasks={inProgressTasks}
-          onDeleteTask={handleDeleteTask}
-          onMoveTask={(id) => moveTask(id, "completed")}
-          moveButtonText="Concluir"
+          onRemoveTask={handleDeleteTask}
+          onUpdateTask={(id) => moveTask(id, "completed")}
         />
 
         <Column
           title="Concluídas"
           firstColor="via-green-500"
-          secondColor="via-green-400"
+          status="completed"
           tasks={completedTasks}
-          onDeleteTask={handleDeleteTask}
+          onRemoveTask={handleDeleteTask}
         />
       </div>
     </div>
