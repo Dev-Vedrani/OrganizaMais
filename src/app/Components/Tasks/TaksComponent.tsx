@@ -1,29 +1,42 @@
-// app/Components/Tasks/TaskComponent.tsx
+// app/Components/Tasks/WhiteboardComponent.tsx
 import { useState } from "react";
+import { Task, TaskStatus, initialTasks } from "@/app/Data/TypeTask"; // Atualize esta linha
 import { Column } from "./Column";
-import { Task, TaskStatus } from "@/app/Data/TypeTask";
 
-export const TaskComponent = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+export const WhiteboardComponent = () => {
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    try {
+      // Tenta carregar do localStorage se necessário
+      const savedTasks = localStorage.getItem("tasks");
+      return savedTasks ? JSON.parse(savedTasks) : initialTasks;
+    } catch {
+      return initialTasks;
+    }
+  });
 
   const handleAddTask = (title: string) => {
     const newTask: Task = {
       id: Date.now().toString(),
       title,
       status: "pending",
-      completed: false,
     };
-    setTasks([...tasks, newTask]);
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const handleDeleteTask = (id: string) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const moveTask = (id: string, status: TaskStatus) => {
-    setTasks(
-      tasks.map((task) => (task.id === id ? { ...task, status } : task))
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, status } : task
     );
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const pendingTasks = tasks.filter((task) => task.status === "pending");

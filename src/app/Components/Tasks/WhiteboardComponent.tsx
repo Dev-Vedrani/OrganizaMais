@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Task, TaskStatus } from "@/app/Data/TypeTask";
+import { initialTasks, Task, TaskStatus } from "@/app/Data/TypeTask";
 import { Column } from "./Column";
-import { initialTasks } from "@/app/Data/Tasks";
 
 export const WhiteboardComponent = () => {
   const [tasks, setTasks] = useState<Task[]>(() => {
@@ -23,7 +22,6 @@ export const WhiteboardComponent = () => {
       id: Date.now().toString(),
       title: taskTitle,
       status: "pending",
-      completed: false,
     };
     setTasks([...tasks, newTask]);
   };
